@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>psicSantiago — Santiago Adorno Naves | Psicoterapia e Psicanálise</title>
+  <meta name="description" content="Serviços de psicologia clínica e psicanálise com Santiago Adorno Naves. Escuta inicial, psicoterapia, supervisão clínica, avaliação psicológica, publicações e reflexões.">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <meta name="keywords" content="Santiago Adorno Naves, psicSantiago, psicologia clinica, psicanalise, psicoterapia, supervisao clinica, avaliacao psicologica">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.psicsantiago.com.br/">
+
+  <!-- Tailwind CSS via CDN Oficial -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          colors: {
+            sage: {
+              50: '#f4f7f4',
+              100: '#e5ebe5',
+              200: '#cbd7cb',
+              300: '#a3b8a3',
+              400: '#759375',
+              500: '#547454',
+              600: '#415c41',
+              700: '#354a35',
+              800: '#2c3c2c',
+              900: '#243124',
+              950: '#131b13',
+            },
+            sand: {
+              50: '#fbf9f6',
+              100: '#f4efe8',
+              200: '#e8ded0',
+              300: '#d7c5b0',
+              800: '#594d3f',
+              900: '#473d32',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ESTILOS DE ALTO CONTRASTE */
+    .high-contrast { background-color: #000000 !important; color: #ffffff !important; }
+    .high-contrast body { background-color: #000000 !important; color: #ffffff !important; }
+    .high-contrast header { background-color: #111111 !important; border-color: #facc15 !important; }
+    .high-contrast section, .high-contrast footer { background-color: #000000 !important; border-color: #facc15 !important; }
+    .high-contrast .bg-sage-50, .high-contrast .bg-sage-100, .high-contrast .bg-sand-50, .high-contrast .bg-white { background-color: #121212 !important; color: #ffffff !important; border-color: #facc15 !important; }
+    .high-contrast p, .high-contrast span, .high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast a, .high-contrast i { color: #ffffff !important; }
+
+    /* TAMANHOS DE FONTE DINÂMICOS */
+    .font-size-sm p { font-size: 0.85rem !important; }
+    .font-size-lg p { font-size: 1.15rem !important; }
+    .font-size-xl p { font-size: 1.3rem !important; }
+  </style>
+</head>
+
+<body class="bg-sand-50 text-sage-900 font-sans selection:bg-sage-200 selection:text-sage-950 overflow-x-hidden transition-all duration-300">
+
+  <a href="#conteudo-principal" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-sage-900 focus:text-white focus:p-3 focus:z-[100]">
+    Ir direto para o conteúdo principal
+  </a>
+
+  <!-- BARRA DE ACESSIBILIDADE -->
+  <div class="bg-sage-100 border-b border-sage-200 py-2 text-xs text-sage-700" role="region" aria-label="Opções de Acessibilidade">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4">
+        <!-- <div class="flex items-center space-x-2">
+          <span class="font-medium flex items-center"><i class="bi bi-eye mr-1"></i> Visual:</span>
+          <button onclick="toggleContrast()" class="hover:underline px-2 py-1 rounded flex items-center gap-1.5 cursor-pointer">
+            <i class="bi bi-circle-half"></i> Alto Contraste
+          </button>
+        </div> -->
+        <!-- <div class="flex items-center space-x-1 border-l border-sage-300 pl-3">
+          <span>Texto:</span>
+          <button onclick="changeFontSize('sm')" class="hover:bg-sage-200 px-2 py-0.5 font-bold rounded cursor-pointer">A-</button>
+          <button onclick="changeFontSize('md')" class="hover:bg-sage-200 px-2 py-0.5 font-bold rounded cursor-pointer">A</button>
+          <button onclick="changeFontSize('lg')" class="hover:bg-sage-200 px-2 py-0.5 font-bold rounded cursor-pointer">A+</button>
+        </div> -->
+      </div>
+      <div>
+        <button onclick="toggleSpeech()" id="btn-audio-reading" class="hover:bg-sage-200 px-3 py-1 font-semibold rounded flex items-center gap-1.5 transition-colors cursor-pointer">
+          <i class="bi bi-volume-up-fill" id="audio-icon"></i>
+          <span id="audio-text">Ouvir página</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-sand-50/90 backdrop-blur-md border-b border-sage-200/50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Área de Logo no Header -->
+        <div class="w-10 h-10 rounded-full bg-sage-200 border border-sage-300 flex items-center justify-center text-sage-800 font-serif font-bold text-lg overflow-hidden shadow-sm flex-shrink-0">
+          <img src="assets/logo.jpeg" alt="Logo psicSantiago" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/cbd7cb/354a35?text=S'">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-semibold tracking-tight text-xl text-sage-900 font-serif leading-none">psicSantiago</span>
+          <span class="text-[10px] text-sage-600 tracking-widest uppercase mt-1">Santiago Adorno Naves</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold tracking-widest uppercase text-sage-700">
+        <a href="#inicio" class="hover:text-sage-950 transition-colors">Início</a>
+        <a href="#sobre" class="hover:text-sage-950 transition-colors">Sobre</a>
+        <a href="#servicos" class="hover:text-sage-950 transition-colors">Serviços</a>
+        <a href="#publicacoes" class="hover:text-sage-950 transition-colors">Publicações</a>
+        <a href="#reflexoes" class="hover:text-sage-950 transition-colors">Reflexões</a>
+        <a href="#contato" class="hover:text-sage-950 transition-colors">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-br from-sage-100/50 via-sand-50 to-sage-50 py-24 md:py-36 border-b border-sage-200/40">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 space-y-6 reveal active">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-100 text-sage-800 text-xs font-semibold tracking-widest uppercase">
+            <i class="bi bi-shield-check"></i> Psicologia Clínica &amp; Psicanálise
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-sage-950 leading-[1.1] font-serif">
+            [per]correndo caminhos do <span class="italic font-light text-sage-700">autoconhecimento</span>.
+          </h1>
+          <p class="text-sage-700 text-lg md:text-xl font-light leading-relaxed">
+            Um espaço seguro, ético e sigiloso de escuta analítica com <strong>Santiago Adorno Naves</strong> para apoiar você na elaboração de conflitos, angústias e na descoberta de novas formas de existir.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="https://wa.me/556296929777" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-sage-800 text-white text-sm font-semibold tracking-wider uppercase hover:bg-sage-900 transition-all duration-300 shadow-md">
+              <i class="bi bi-whatsapp mr-2 text-emerald-400 text-base"></i> Agendar Atendimento
+            </a>
+            <a href="#sobre" class="inline-flex items-center justify-center px-8 py-4 border border-sage-300 text-sage-800 bg-white/60 hover:bg-white text-sm font-semibold tracking-wider uppercase transition-all duration-300">
+              Conhecer Sobre
+            </a>
+          </div>
+        </div>
+
+        <!-- Área de Imagem no Hero -->
+        <div class="md:col-span-5 reveal active flex justify-center">
+          <div class="w-full max-w-md aspect-[4/5] bg-sage-200 border-2 border-sage-300/80 rounded-3xl overflow-hidden shadow-xl relative group">
+            <img src="assets/hero-image.jpeg" alt="Psicologia Clínica e Psicanálise" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x750/e5ebe5/415c41?text=Psicologia+Clínica+%26+Psicanálise'">
+            <!-- <div class="absolute inset-0 bg-gradient-to-t from-sage-950/60 via-transparent to-transparent opacity-90 flex flex-col justify-end p-6 text-white">
+              <span class="text-xs uppercase tracking-widest font-semibold text-sage-200">Santiago Adorno Naves</span>
+              <span class="text-sm font-serif italic">Escuta analítica e acolhimento</span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE COM ÁREA PARA FOTO DO PSICÓLOGO -->
+    <section id="sobre" class="py-24 md:py-32 bg-sage-100/40 border-t border-sage-200/60">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-5 flex flex-col items-center">
+          <div class="w-full max-w-sm aspect-[4/5] bg-sage-200 border-2 border-sage-300/80 rounded-2xl overflow-hidden shadow-md flex flex-col items-center justify-center relative group">
+            <img src="assets/santi.png" alt="Santiago Adorno Naves" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/500x625/e5ebe5/415c41?text=Santiago+Adorno+Naves'">
+            <div class="absolute inset-0 bg-sage-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+              <span class="text-white text-xs font-medium tracking-wider bg-sage-900/80 px-3 py-1.5 rounded">Santiago Adorno Naves • CRP</span>
+            </div>
+          </div>
+          <p class="text-xs text-sage-600 mt-3 italic">Psicólogo Clínico e Psicanalista</p>
+        </div>
+
+        <div class="md:col-span-7 space-y-6">
+          <div class="space-y-2">
+            <h2 class="text-xs font-bold tracking-widest uppercase text-sage-500">Trajetória Profissional</h2>
+            <h3 class="text-3xl md:text-4xl font-normal text-sage-950 font-serif">Sobre Santiago Adorno Naves</h3>
+          </div>
+          <div class="space-y-4 text-sage-700 font-light text-base md:text-lg leading-relaxed">
+            <p>
+              Olá. Sou <strong>Santiago Adorno Naves</strong>, psicólogo clínico e psicanalista. Meu trabalho é pautado na oferta de uma escuta atenta, ética e desprovida de julgamentos, criando um setting terapêutico seguro onde a palavra é o principal vetor para a elaboração de angústias, sintomas e impasses existenciais.
+            </p>
+            <p>
+              Acredito que cada percurso analítico é singular. O objetivo do processo não é fornecer respostas prontas, mas sim abrir caminhos para que cada indivíduo possa se responsabilizar por sua própria história e encontrar novas maneiras de lidar com a realidade e com o desejo.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-sage-200/60 text-xs text-sage-700">
+            <div class="flex items-center gap-2">
+              <i class="bi bi-check-circle-fill text-sage-600 text-sm"></i>
+              <span>Atendimento Clínico Presencial e Online</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="bi bi-check-circle-fill text-sage-600 text-sm"></i>
+              <span>Rigor com o Sigilo e Código de Ética Profissional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="py-24 md:py-32 bg-sand-50 border-t border-sage-200/60">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center space-y-4 mb-16 reveal active">
+          <h2 class="text-xs font-bold tracking-widest uppercase text-sage-500">Modalidades Clínicas</h2>
+          <h3 class="text-3xl md:text-5xl font-normal text-sage-950 tracking-tight font-serif">Demandas Acompanhadas em Consultório</h3>
+          <p class="text-sage-700 font-light max-w-2xl mx-auto text-sm md:text-base">
+            Abordagens fundamentadas na psicanálise e na escuta qualificada para cada momento da sua trajetória.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="p-8 bg-white border border-sage-200/70 shadow-sm rounded-xl flex flex-col justify-between hover:border-sage-400 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center text-sage-800 mb-6 text-xl">
+                <i class="bi bi-chat-heart"></i>
+              </div>
+              <h4 class="text-xl font-semibold text-sage-950 font-serif mb-3">Escuta Inicial</h4>
+              <p class="text-sm text-sage-700 font-light leading-relaxed">
+                Momento de acolhimento preliminar para compreender a sua demanda atual, escutar suas necessidades e direcionar o acompanhamento clínico adequado.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white border border-sage-200/70 shadow-sm rounded-xl flex flex-col justify-between hover:border-sage-400 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center text-sage-800 mb-6 text-xl">
+                <i class="bi bi-hourglass-split"></i>
+              </div>
+              <h4 class="text-xl font-semibold text-sage-950 font-serif mb-3">Psicoterapia Breve Psicanalítica</h4>
+              <p class="text-sm text-sage-700 font-light leading-relaxed">
+                Tratamento focado e de duração estruturada, voltado para a resolução de questões específicas e objetivos terapêuticos delimitados.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white border border-sage-200/70 shadow-sm rounded-xl flex flex-col justify-between hover:border-sage-400 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center text-sage-800 mb-6 text-xl">
+                <i class="bi bi-compass"></i>
+              </div>
+              <h4 class="text-xl font-semibold text-sage-950 font-serif mb-3">Processo Clínico Psicanalítico</h4>
+              <p class="text-sm text-sage-700 font-light leading-relaxed">
+                Jornada aprofundada de investigação do inconsciente, promovendo transformação subjetiva, elaboração de traumas e resgate de escolhas conscientes.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white border border-sage-200/70 shadow-sm rounded-xl flex flex-col justify-between hover:border-sage-400 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center text-sage-800 mb-6 text-xl">
+                <i class="bi bi-journal-code"></i>
+              </div>
+              <h4 class="text-xl font-semibold text-sage-950 font-serif mb-3">Supervisão Clínica</h4>
+              <p class="text-sm text-sage-700 font-light leading-relaxed">
+                Espaço técnico voltado para profissionais e estudantes de psicologia e psicanálise, dedicado ao estudo de casos e aprimoramento da escuta.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-8 bg-white border border-sage-200/70 shadow-sm rounded-xl flex flex-col justify-between md:col-span-2 lg:col-span-2 hover:border-sage-400 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-sage-100 flex items-center justify-center text-sage-800 mb-6 text-xl">
+                <i class="bi bi-file-earmark-text"></i>
+              </div>
+              <h4 class="text-xl font-semibold text-sage-950 font-serif mb-3">Avaliação e Documentos Psicológicos</h4>
+              <p class="text-sm text-sage-700 font-light leading-relaxed">
+                Emissão técnica de laudos, relatórios, pareceres e avaliações fundamentadas na análise psíquica para auxiliar em processos de desenvolvimento pessoal e institucional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publicacoes" class="py-24 md:py-32 bg-sage-100/40 border-t border-sage-200/60">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center space-y-4 mb-16">
+          <h2 class="text-xs font-bold tracking-widest uppercase text-sage-500">Produção Acadêmica</h2>
+          <h3 class="text-3xl md:text-5xl font-normal text-sage-950 font-serif">Publicações Científicas</h3>
+          <p class="text-sage-700 font-light max-w-2xl mx-auto text-sm md:text-base">
+            Artigos e pesquisas voltados à psicanálise, à psicologia clínica e aos fenômenos da subjetividade contemporânea.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 bg-white border border-sage-200/70 rounded-xl shadow-sm space-y-4">
+            <span class="text-[10px] uppercase tracking-widest text-sage-500 font-semibold">Revista de Psicanálise • 2025</span>
+            <h4 class="text-xl font-semibold text-sage-950 font-serif">O mal-estar contemporâneo e os novos sintomas na clínica psicanalítica</h4>
+            <p class="text-sm text-sage-700 font-light leading-relaxed">
+              Investigação acerca de como as exigências de hiperprodutividade e os novos laços sociais reverberam no sofrimento psíquico e na demanda por análise na atualidade.
+            </p>
+            <a href="#" class="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-sage-900 hover:text-sage-600 pt-2">
+              Ler Artigo Completo <i class="bi bi-arrow-right ml-1"></i>
+            </a>
+          </div>
+
+          <div class="p-8 bg-white border border-sage-200/70 rounded-xl shadow-sm space-y-4">
+            <span class="text-[10px] uppercase tracking-widest text-sage-500 font-semibold">Cadernos Clínicos • 2024</span>
+            <h4 class="text-xl font-semibold text-sage-950 font-serif">A escuta do inconsciente nos tempos digitais: desafios da transferência online</h4>
+            <p class="text-sm text-sage-700 font-light leading-relaxed">
+              Análise sobre as transformações no setting terapêutico virtual e a preservação da regra fundamental da associação livre à distância.
+            </p>
+            <a href="#" class="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-sage-900 hover:text-sage-600 pt-2">
+              Ler Artigo Completo <i class="bi bi-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reflexoes" class="py-24 md:py-32 bg-sand-50 border-t border-sage-200/60">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center space-y-4 mb-12">
+          <h2 class="text-xs font-bold tracking-widest uppercase text-sage-500">Textos &amp; Crônicas</h2>
+          <h3 class="text-3xl md:text-5xl font-normal text-sage-950 font-serif">Reflexões Psicanalíticas</h3>
+          <p class="text-sage-700 font-light max-w-2xl mx-auto text-sm md:text-base">
+            Reflexões e crônicas atualizadas diretamente do nosso documento de trabalho. Escreva no Google Docs e altere aqui em tempo real.
+          </p>
+        </div>
+
+        <!-- CONTAINER DO GOOGLE DOCS VIA IFRAME -->
+        <div class="bg-white border border-sage-200/80 rounded-2xl shadow-md overflow-hidden transition-all">
+          <div class="bg-sage-100/60 px-6 py-3 border-b border-sage-200 flex items-center justify-between text-xs text-sage-700">
+            <span class="font-medium flex items-center gap-2">
+              <i class="bi bi-file-earmark-word text-blue-600 text-sm"></i> Reflexões
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-emerald-700 font-medium bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Sincronizado
+            </span>
+          </div>
+          <div class="w-full h-80 bg-white relative">
+            <iframe 
+              src="https://docs.google.com/document/d/e/2PACX-1vQ65pqMeHaJCyEJiEnXfyOs9S7_V33rskzi276lQkOP5-gnX8h978udk0RdGy28Z5QxWrV5RQL2E4bn/pub?embedded=true" 
+              class="w-full h-full border-0"
+              title="Reflexões Psicanalíticas - Google Docs"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-24 md:py-32 bg-sage-900 text-sage-50 border-t border-sage-950">
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+        <h2 class="text-xs font-bold tracking-widest uppercase text-sage-300">Inicie seu Percurso</h2>
+        <h3 class="text-3xl md:text-5xl font-normal text-white font-serif">Entre em Contato e Agende sua Sessão</h3>
+        <p class="text-sage-300 font-light max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+          Atendimentos presenciais e online com Santiago Adorno Naves. Tire suas dúvidas ou agende o seu horário de forma direta.
+        </p>
+        <div class="pt-4">
+          <a href="https://wa.me/556296929777" target="_blank" class="inline-flex items-center justify-center px-10 py-5 bg-white text-sage-950 rounded-xl text-sm font-bold tracking-wider uppercase shadow-xl hover:bg-sage-100 transition-all duration-300">
+            <i class="bi bi-whatsapp mr-2 text-emerald-600 text-lg"></i> Falar via WhatsApp (62 9692-9777)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-sage-950 text-sage-400 text-xs py-12 border-t border-sage-900">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <p class="font-semibold text-sage-200 text-sm">psicSantiago</p>
+        <p class="text-[11px] text-sage-400 mt-1">Santiago Adorno Naves • [per]correndo caminhos do autoconhecimento</p>
+      </div>
+      <div class="flex space-x-6 text-base">
+        <a href="https://wa.me/556296929777" target="_blank" class="hover:text-white transition-colors" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" class="hover:text-white transition-colors" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="hover:text-white transition-colors" title="Email"><i class="bi bi-envelope"></i></a>
+      </div>
+      <div class="text-center md:text-right text-[11px]">
+        <p>© 2026 psicSantiago. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleContrast() {
+      document.documentElement.classList.toggle('high-contrast');
+      localStorage.setItem('highContrast', document.documentElement.classList.contains('high-contrast'));
+    }
+
+    function changeFontSize(size) {
+      document.documentElement.classList.remove('font-size-sm', 'font-size-lg', 'font-size-xl');
+      if (size === 'sm') document.documentElement.classList.add('font-size-sm');
+      else if (size === 'lg') document.documentElement.classList.add('font-size-lg');
+      else if (size === 'xl') document.documentElement.classList.add('font-size-xl');
+      localStorage.setItem('fontSizePreference', size);
+    }
+
+    let speechSynth = window.speechSynthesis;
+    let isReading = false;
+    function toggleSpeech() {
+      const audioIcon = document.getElementById('audio-icon');
+      const audioText = document.getElementById('audio-text');
+      if (!speechSynth) return;
+
+      if (isReading) {
+        speechSynth.cancel();
+        isReading = false;
+        audioIcon.classList.replace('bi-stop-fill', 'bi-volume-up-fill');
+        audioText.textContent = 'Ouvir página';
+      } else {
+        const textToRead = document.getElementById('conteudo-principal').innerText;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.lang = 'pt-BR';
+        utterance.onend = () => {
+          isReading = false;
+          audioIcon.classList.replace('bi-stop-fill', 'bi-volume-up-fill');
+          audioText.textContent = 'Ouvir página';
+        };
+        speechSynth.speak(utterance);
+        isReading = true;
+        audioIcon.classList.replace('bi-volume-up-fill', 'bi-stop-fill');
+        audioText.textContent = 'Parar leitura';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('highContrast') === 'true') document.documentElement.classList.add('high-contrast');
+      const savedFontSize = localStorage.getItem('fontSizePreference');
+      if (savedFontSize) changeFontSize(savedFontSize);
+    });
+  </script>
+</body>
+</html>
